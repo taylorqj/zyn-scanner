@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E4926A"/>
+      <stop offset="1" stop-color="#B85A33"/>
+    </linearGradient>
+    <radialGradient id="lid" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#FFF8EE"/>
+      <stop offset="1" stop-color="#F3E3CF"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warm tile -->
+  <rect x="0" y="0" width="128" height="128" rx="30" fill="url(#bg)"/>
+
+  <!-- Viewfinder corners -->
+  <g id="corners" fill="none" stroke="#FFF4E6" stroke-width="8" stroke-linecap="round" opacity="0.95">
+    <path d="M22 40 V30 a8 8 0 0 1 8 -8 H40"/>
+    <path d="M88 22 H98 a8 8 0 0 1 8 8 V40"/>
+    <path d="M106 88 V98 a8 8 0 0 1 -8 8 H88"/>
+    <path d="M40 106 H30 a8 8 0 0 1 -8 -8 V88"/>
+  </g>
+
+  <!-- Can lid, seen from above -->
+  <g id="lid">
+    <circle cx="64" cy="64" r="27" fill="url(#lid)"/>
+    <circle cx="64" cy="64" r="27" fill="none" stroke="#9E4A27" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="64" cy="64" r="16" fill="none" stroke="#C8673B" stroke-width="5"/>
+    <circle cx="64" cy="64" r="5" fill="#C8673B"/>
+  </g>
+</svg>
