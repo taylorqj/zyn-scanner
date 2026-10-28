@@ -68,7 +68,7 @@ describe('playScanSound', () => {
     { result: { kind: 'duplicate', record: record('ABC123') }, sound: 'duplicate' },
     { result: { kind: 'untrusted_host', host: 'evil.example', code: 'ABC123' }, sound: 'duplicate' },
     { result: { kind: 'unrecognized' }, sound: 'unrecognized' },
-  ])('plays the $sound sound for a $result.kind scan', ({ result, sound }) => {
+  ])('plays the $sound sound for a scan of kind $result.kind', ({ result, sound }) => {
     playScanSound(result);
 
     expect(scanSounds[sound]).toHaveBeenCalledOnce();
