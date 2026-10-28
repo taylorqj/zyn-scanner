@@ -1,0 +1,27 @@
+# no-mistakes pipeline config. Read from main only, so changes here take
+# effect for branches cut after they merge.
+
+commands:
+  prepare: "pnpm install --frozen-lockfile"
+  # No ESLint here; the typecheck is the lint gate, as in CI.
+  lint: "pnpm compile"
+  # Vitest unit suite. Fast enough to run on every change.
+  test: "pnpm test"
+
+test:
+  instructions: |
+    Zyn Scanner is a Chrome MV3 extension built with WXT. Drive it the way the
+    Playwright suite in e2e/ does, never against the real zyn.com:
+
+    1. pnpm exec playwright install chromium (once per machine), then pnpm build.
+    2. Use the helpers in e2e/support: launchWithExtension loads dist/ into
+       Chromium with a fake camera, writeQrVideo turns QR links into that
+       camera's video, startZynMock serves a local Zyn rewards API, and
+       logInToZyn / openScanner open the scanner page.
+    3. For a scenario the existing specs do not cover, write a temporary spec
+       under e2e/ with those helpers, run it with pnpm exec playwright test
+       <file>, keep its output as evidence, then delete the spec.
+
+    pnpm test:e2e runs the whole browser suite and takes a few minutes; prefer
+    a single spec. A change that only touches unit tests, docs, or this file
+    has no user-facing surface to drive.
